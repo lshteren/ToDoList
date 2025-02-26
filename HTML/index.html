@@ -9,20 +9,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>To Do List</title>
-    <link rel="stylesheet" href="/CSS/index.css">
-    <script src="/JS/index.js"></script>
+    <link rel="stylesheet" href="../CSS/index.css">
+    <script src="../JS/index.js"></script>
     <script src="../JS/signIn.js"></script>
-    <script src="/JS/signUp.js"></script>
+    <script src="../JS/signUp.js"></script>
 </head>
 
 <body>
-    <h1>Streamline your workflows
-        <br> for maximum efficiency</h1>
-    <h2>Plan, manage, and track all your projects on one customizable platform </h2>
-    <div id="manu-bar" style="display: flex;">
-        <button id="sign-in-button" onclick="signInManuHandler()">sign in</button>
-        <button id="sign-up-button" onclick="signUpManuHandler()">sign up</button>
+    <div id="main-content">
+        <h1>Streamline your workflows
+            <br> for maximum efficiency</h1>
+        <h2>Plan, manage, and track all your projects on one customizable platform </h2>
+        <div id="manu-bar" style="display: flex;">
+            <button id="sign-in-button" onclick="signInManuHandler()">sign in</button>
+            <button id="sign-up-button" onclick="signUpManuHandler()">sign up</button>
+        </div>
     </div>
+    
 
     <div id="container"></div>
 
@@ -43,7 +46,7 @@
             <input type="text" id="password" name="password" required>
             <br />
 
-            <button id="sign-in-button" onclick="signInButtonHandler()">log in</button>
+            <button id="login" onclick="signInButtonHandler()">log in</button>
         </div>
     </template>
 
