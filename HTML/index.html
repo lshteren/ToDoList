@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Do List</title>
+    <link rel="stylesheet" href="CSS/index.css">
+</head>
+
+<body>
+    <div id="main-content">
+        <h1>Streamline your workflows
+            <br> for maximum efficiency</h1>
+        <h2>Plan, manage, and track all your projects on one customizable platform</h2>
+        <div id="menu-bar" style="display: flex;">
+            <button id="sign-in-button" onclick="loadTemplate('sign-in-template')">Sign in</button>
+            <button id="sign-up-button" onclick="loadTemplate('sign-up-template')">Sign up</button>
+        </div>
+    </div>
+
+    <div id="container"></div> <!-- כאן נטען התוכן מהתבניות -->
+
+    <!-- תבנית עמוד ראשי לאחר התחברות -->
+    <template id="main-page-template">
+        <div id="main-page-div">
+            <h1>Welcome to our site! <br> You are signed in!</h1>
+            <button id="sign-out" onclick="signOutHandler()">Sign out</button>
+        </div>
+    </template>
+
+    <!-- תבנית מסך התחברות -->
+    <template id="sign-in-template">
+        <div>
+            <h2>Sign In</h2>
+            <label for="username">Username:</label>
+            <input type="text" id="username" required>
+            <br />
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" required>
+            <br />
+
+            <button onclick="signInButtonHandler()">Log in</button>
+        </div>
+    </template>
+
+    <!-- תבנית מסך הרשמה -->
+    <template id="sign-up-template">
+        <form onsubmit="signUpSubmitHandler(event)">
+            <h2>Register</h2>
+            <p>Please fill in this form to create an account.</p>
+            <hr>
+
+            <label for="uname"><b>Username</b></label>
+            <input type="text" id="uname" required>
+            <br />
+
+            <label for="email"><b>Email</b></label>
+            <input type="email" id="email" required>
+            <br />
+
+            <label for="psw"><b>Password</b></label>
+            <input type="password" id="psw" required>
+            <br />
+
+            <label for="re-password"><b>Repeat Password</b></label>
+            <input type="password" id="re-password" required>
+            <br />
+
+            <button type="submit">Register</button>
+        </form>
+    </template>
+
+    <script src="JS/index.js"></script>
+    <script src="JS/signIn.js"></script>
+    <script src="JS/signUp.js"></script>
+</body>
+</html>
