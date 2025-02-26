@@ -5,14 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>To Do List</title>
     <link rel="stylesheet" href="../CSS/index.css">
+    <link rel="stylesheet" href="../CSS/signIn.css">
+    <link rel="stylesheet" href="../CSS/signUp.css">
+    <link rel="stylesheet" href="../CSS/main.css">
     <script src="../JS/index.js"></script>
     <script src="../JS/signIn.js"></script>
     <script src="../JS/signUp.js"></script>
-    <link rel="stylesheet" href="CSS/index.css">
 </head>
 
 <body>
-    <div id="main-content">
+    <div id="main-content" >
         <h1>Streamline your workflows
             <br> for maximum efficiency</h1>
         <h2>Plan, manage, and track all your projects on one customizable platform </h2>
@@ -20,32 +22,43 @@
             <button id="sign-in-button" onclick="signInManuHandler()">sign in</button>
             <button id="sign-up-button" onclick="signUpManuHandler()">sign up</button>
         </div>
+    </div>
     
-
-    <div id="container"></div> <!-- כאן נטען התוכן מהתבניות -->
+<!-- כאן נטען התוכן מהתבניות -->
+    <div id="container"></div>
 
     <!-- תבנית עמוד ראשי לאחר התחברות -->
     <template id="main-page-template">
         <div id="main-page-div">
-            <h1>Welcome to our site! <br> You are signed in!</h1>
-            <button id="sign-out" onclick="signOutHandler()">Sign out</button>
+            <div class="header">
+                <h1>Welcome to our site!</h1>
+                <button id="sign-out" onclick="signOutHandler()">Sign out</button>
+            </div>
+            
+            <div class="todo-container">
+                <h2>To-Do List</h2>
+                <div class="task-input">
+                    <input type="text" id="new-task" placeholder="Add a new task...">
+                    <button onclick="addTask()">Add Task</button>
+                </div>
+                <ul id="task-list"></ul>
+            </div>
         </div>
     </template>
 
     <!-- תבנית מסך התחברות -->
-    <template id="sign-in-template">
-        <div>
+    <template id="sign-in-template" style=>
+        <div class="login-container">
             <h2>Sign In</h2>
-            <label for="username">Username:</label>
-            <input type="text" id="username" required>
-            <br />
-
-            <label for="password">Password:</label>
-            <input type="password" id="password" required>
-            <br />
-
-            <button id="login" onclick="signInButtonHandler()">log in</button>
-            <button onclick="signInButtonHandler()">Log in</button>
+            <form id="login-form">
+                <label for="username">Username:</label>
+                <input type="text" id="username" required>
+    
+                <label for="password">Password:</label>
+                <input type="password" id="password" required>
+    
+                <button id="login" onclick="signInButtonHandler()">log in</button>
+            </form>
         </div>
     </template>
 
@@ -76,8 +89,6 @@
         </form>
     </template>
 
-    <script src="JS/index.js"></script>
-    <script src="JS/signIn.js"></script>
-    <script src="JS/signUp.js"></script>
+   
 </body>
 </html>
