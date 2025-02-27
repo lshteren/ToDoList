@@ -1,39 +1,50 @@
-// function register() {
-//     const username = document.getElementById("username").value;
-//     const password = document.getElementById("password").value;
 
-//     let users = JSON.parse(localStorage.getItem("users")) || [];
+let storage_users = JSON.parse(localStorage.getItem("storage_users")) || [];
+
+//create default admin user
+let adminUser = {
+    username: "admin",
+    email: "admin@admin.co.il",
+    password: "admin"
+}
+storage_users.push(adminUser);
+localStorage.setItem("storage_users", JSON.stringify(storage_users));
+
+
+function register() {
+    const username = document.getElementById("uname").value;
+    const password = document.getElementById("psw").value;
+    const email = document.getElementById("email").value;
+    const rePassword = document.getElementById("re-password").value;
     
-//     if (users.some(user => user.username === username)) {
-//         alert("שם משתמש כבר קיים!");
-//         return;
-//     }
+    if (storage_users.some(user => user.username === username)) {
+        alert("שם משתמש כבר קיים!");
+        return false;
+    }
+    if (password === rePassword) { 
+        storage_users.push({ email:email, username:username, password:password });
+        localStorage.setItem("storage_users", JSON.stringify(storage_users));
+    } else{
+        return false;
+    }
+    return true;
 
-//     users.push({ id: users.length + 1, username, password });
-//     localStorage.setItem("users", JSON.stringify(users));
-//     alert("נרשמת בהצלחה!");
-// }
+}
 
-// function login() {
-//     const username = document.getElementById("username").value;
-//     const password = document.getElementById("password").value;
+function login() {
+    const username = document.getElementById("username").value;
+    const password = document.getElementById("password").value;
+    // let storage_users = JSON.parse(localStorage.getItem("users")) || [];
+    const user = storage_users.find(user => user.username === username && user.password === password);
+    if (!user) {
+        return false;
+    }
+    localStorage.setItem("currentUser", JSON.stringify(user));
+    //loadTasks();
 
-//     let users = JSON.parse(localStorage.getItem("users")) || [];
-//     const user = users.find(user => user.username === username && user.password === password);
+    return user;
+}
 
-//     if (!user) {
-//         alert("שם משתמש או סיסמה שגויים");
-//         return;
-//     }
-
-//     localStorage.setItem("currentUser", JSON.stringify(user));
-//     document.getElementById("auth").style.display = "none";
-//     document.getElementById("tasks").style.display = "block";
-//     loadTasks();
-// }
-
-// function logout() {
-//     localStorage.removeItem("currentUser");
-//     document.getElementById("auth").style.display = "block";
-//     document.getElementById("tasks").style.display = "none";
-// }
+function logout() {
+    localStorage.removeItem("currentUser");
+}

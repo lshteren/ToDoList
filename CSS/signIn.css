@@ -36,7 +36,7 @@ input {
 }
 
 /* כפתור */
-button {
+#login {
     width: 100%;
     padding: 10px;
     background-color: #007bff;
@@ -47,6 +47,6 @@ button {
     transition: 0.3s;
 }
 
-button:hover {
+#login:hover {
     background-color: #0056b3;
 }

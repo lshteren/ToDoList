@@ -34,7 +34,7 @@ input {
     font-size: 16px;
 }
 
-button {
+#signup {
     width: 100%;
     padding: 10px;
     margin-top: 15px;
@@ -47,6 +47,6 @@ button {
     transition: background 0.3s ease;
 }
 
-button:hover {
+#signup:hover {
     background-color: #218838;
 }

@@ -1,18 +1,23 @@
-let users = [];
+// let users = [];
 
-//create default admin user
-let adminUser = {
-    username: "admin",
-    email: "admin@admin.co.il",
-    password: "admin"
-}
+// //create default admin user
+// let adminUser = {
+//     username: "admin",
+//     email: "admin@admin.co.il",
+//     password: "admin"
+// }
 
-users.push(adminUser);
-//signOutHnadler();
+//users.push(adminUser);
+// signOutHandler();
+//const mainPage = document.getElementById("main-content");
 
-function signOutHnadler() {
+function signOutHandler() {
     const container = document.getElementById("container");
+    container.innerHTML = '';
     const mainPage = document.getElementById("main-content");
-    container.innerHTML = document.getElementById("main-content");
-    mainPage.display="block";
+    mainPage.style.display = "block";
+    //console.log(mainPage.innerHTML)
+    //container.innerHTML = '';
+    container.style.visibility= "hidden";
+    //logout();
 }
