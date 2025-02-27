@@ -19,5 +19,5 @@ function signOutHandler() {
     //console.log(mainPage.innerHTML)
     //container.innerHTML = '';
     container.style.visibility= "hidden";
-    //logout();
+    logout();
 }
