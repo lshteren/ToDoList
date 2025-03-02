@@ -57,9 +57,12 @@ body {
 
 .task-input input {
     flex: 1;
-    padding: 8px;
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin: 8px 0;
     border: 1px solid #ccc;
     border-radius: 5px;
+    display: block;
 }
 
 .task-input button {

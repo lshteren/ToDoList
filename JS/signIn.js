@@ -16,10 +16,11 @@ function signInManuHandler(){
     container.display="block";
 }
 
-function signInButtonHandler() {
-    const user =login();
-    if (user) {
-        alert(`Welcome ${user.username} !`);
+function signInButtonHandler(event) {
+    //event.preventDefault();
+    //const user =login();
+    fakeLogin((user) => {
+        alert(`Welcome ${user.username}!`);
         //load the main page
         const mainContent = document.getElementById("main-content");
         const container = document.getElementById("container");
@@ -31,11 +32,8 @@ function signInButtonHandler() {
         container.appendChild(clone);
         container.display="block";
 
-        // const manuBar = document.getElementById("manu-bar");
-        // manuBar.style.visibility = "hidden";
-    }
-    else {
-            alert("Wrong, try again!");
-    }
+       // renderTasks();
+    });
+
 
 }

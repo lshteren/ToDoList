@@ -11,11 +11,9 @@ function signUpManuHandler() {
 
 // sign-up logic
 function signUpSubmitHandler() {
-    if (register()) {
-        alert("You are redirecting to sign-in page!");
-        // display the sign-in page
+    fakeRegister(() => {
+        alert("Registration successful! Redirecting to sign-in...");
         signInManuHandler();
-    } else {
-        alert("Password don't match! please try again.");
-    }
+    });
+    
 }

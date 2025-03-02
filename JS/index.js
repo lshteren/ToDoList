@@ -18,6 +18,6 @@ function signOutHandler() {
     mainPage.style.display = "block";
     //console.log(mainPage.innerHTML)
     //container.innerHTML = '';
-    container.style.visibility= "hidden";
+    //container.style.visibility= "hidden";
     logout();
 }
