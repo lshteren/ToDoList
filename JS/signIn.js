@@ -16,7 +16,7 @@ function signInManuHandler(){
     container.display="block";
 }
 
-function signInButtonHandler(event) {
+function signInButtonHandler() {
     //event.preventDefault();
     //const user =login();
     fakeLogin((user) => {
