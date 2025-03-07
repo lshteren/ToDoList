@@ -1,49 +1,55 @@
-function loadTasks() {
-    let user = JSON.parse(localStorage.getItem("currentUser"));
-    if (!user) return;
-
-    let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
-    let userTasks = tasks.filter(task => task.userId === user.id);
-    
-    let taskList = document.getElementById("taskList");
-    taskList.innerHTML = "";
-    
-    userTasks.forEach(task => {
-        let li = document.createElement("li");
-        li.textContent = task.title;
-        li.style.textDecoration = task.completed ? "line-through" : "none";
-        
-        li.onclick = function () {
-            task.completed = !task.completed;
-            localStorage.setItem("tasks", JSON.stringify(tasks));
-            loadTasks();
-        };
-
-        let delButton = document.createElement("button");
-        delButton.textContent = "🗑";
-        delButton.onclick = function (event) {
-            event.stopPropagation();
-            tasks = tasks.filter(t => t.id !== task.id);
-            localStorage.setItem("tasks", JSON.stringify(tasks));
-            loadTasks();
-        };
-
-        li.appendChild(delButton);
-        taskList.appendChild(li);
-    });
+//show the users lists
+function getUserLists(userId) {
+    let todos = JSON.parse(localStorage.getItem("todos")) || [];
+    let userTodos = todos.find(todo => todo.userId === userId);
+    return userTodos ? userTodos.lists : [];
 }
 
-function addTask() {
-    let user = JSON.parse(localStorage.getItem("currentUser"));
-    if (!user) return;
+//add list to local storage
+function addList(userId, listName) {
+    let todos = JSON.parse(localStorage.getItem("todos")) || [];
+    let userTodos = todos.find(todo => todo.userId === userId);
 
-    let taskTitle = document.getElementById("taskInput").value;
-    if (!taskTitle) return;
+    let newList = { id: Date.now(), name: listName, tasks: [] };
 
-    let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
-    tasks.push({ id: tasks.length + 1, userId: user.id, title: taskTitle, completed: false });
-    localStorage.setItem("tasks", JSON.stringify(tasks));
+    if (userTodos) {
+        userTodos.lists.push(newList);
+    } else {
+        todos.push({ userId, lists: [newList] });
+    }
 
-    document.getElementById("taskInput").value = "";
-    loadTasks();
+    localStorage.setItem("todos", JSON.stringify(todos));
+    return newList;
 }
+
+//show the lists tasks
+function getTasks(userId, listId) {
+    let lists = getUserLists(userId);
+    let list = lists.find(l => l.id === listId);
+    return list ? list.tasks : [];
+}
+
+//add task to the list
+function addTask(userId, listId, taskName) {
+    let todos = JSON.parse(localStorage.getItem("todos")) || [];
+    let userTodos = todos.find(todo => todo.userId === userId);
+    let list = userTodos.lists.find(l => l.id === listId);
+
+    let newTask = { id: Date.now(), name: taskName, completed: false };
+    list.tasks.push(newTask);
+
+    localStorage.setItem("todos", JSON.stringify(todos));
+    return newTask;
+}
+
+//complete and delete task
+function completeTask(userId, listId, taskId) {
+    let todos = JSON.parse(localStorage.getItem("todos")) || [];
+    let userTodos = todos.find(todo => todo.userId === userId);
+    let list = userTodos.lists.find(l => l.id === listId);
+
+    list.tasks = list.tasks.filter(task => task.id !== taskId);
+
+    localStorage.setItem("todos", JSON.stringify(todos));
+}
+
