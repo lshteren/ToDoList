@@ -1,4 +1,5 @@
 //handeling the sign-in page from all places
+// import { FXMLHttpRequest } from './network';
 
 const mainPage = document.getElementById("main-content");
 
@@ -19,10 +20,22 @@ function signInManuHandler(){
 function signInButtonHandler() {
     //event.preventDefault();
     //const user =login();
-    fakeLogin((user) => {
-        alert(`Welcome ${user.username}!`);
-        //load the main page
-        const mainContent = document.getElementById("main-content");
+    const username = document.getElementById("username").value;
+    const password = document.getElementById("password").value;
+    let xhr = new FXMLHttpRequest(network);
+    xhr.open("POST", "user"); // שולח בקשה לשרת המשתמשים
+    xhr.send({ action: "login", username, password }, function(response) {
+        if (!response.success) {
+            alert(response.message);
+            return;
+        }
+        alert(`Welcome ${response.user.username}!`);
+        loadMainPage(); // טעינת הדף הראשי עם המשימות
+    });
+}
+
+function loadMainPage(){
+    const mainContent = document.getElementById("main-content");
         const container = document.getElementById("container");
         const mainPageTamplate = document.getElementById("main-page-template");
         const clone = mainPageTamplate.content.cloneNode(true);
@@ -33,7 +46,6 @@ function signInButtonHandler() {
         container.display="block";
 
        // renderTasks();
-    });
-
-
+        
 }
+

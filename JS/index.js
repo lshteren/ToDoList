@@ -1,23 +1,33 @@
-// let users = [];
+// import { FXMLHttpRequest } from './network';
 
-// //create default admin user
-// let adminUser = {
-//     username: "admin",
-//     email: "admin@admin.co.il",
-//     password: "admin"
+//
+// function checkUserLogin() {
+//     let xhr = new FXMLHttpRequest(network);
+//     xhr.open("GET", "user"); // שולח בקשת GET לשרת המשתמשים
+//     xhr.send({ action: "getCurrentUser" }, function(response) {
+//         if (!response.user) {
+//             console.log(" אין משתמש מחובר, מפנים למסך ההתחברות.");
+//             signInManuHandler();
+//             return;
+//         }
+
+//         console.log(" משתמש מחובר:", response.user.username);
+//         loadMainPage(); // אם מחובר, טוענים את העמוד הראשי
+//     });
 // }
-
-//users.push(adminUser);
-// signOutHandler();
-//const mainPage = document.getElementById("main-content");
-
 function signOutHandler() {
-    const container = document.getElementById("container");
-    container.innerHTML = '';
-    const mainPage = document.getElementById("main-content");
-    mainPage.style.display = "block";
-    //console.log(mainPage.innerHTML)
-    //container.innerHTML = '';
-    //container.style.visibility= "hidden";
-    logout();
+    let xhr = new FXMLHttpRequest(network);
+    xhr.open("POST", "user"); // שולחים בקשה לשרת המשתמשים
+    xhr.send({ action: "logout" }, function(response) {
+        if (!response.success) {
+            console.error(" שגיאה בהתנתקות:", response.message);
+            return;
+        }
+
+        console.log(" התנתקות בוצעה בהצלחה!");
+        const container = document.getElementById("container");
+        container.innerHTML = '';
+        const mainPage = document.getElementById("main-content");
+        mainPage.style.display = "block";
+    });
 }
