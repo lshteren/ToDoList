@@ -1,5 +1,6 @@
 
 function signUpManuHandler() {
+    
     const container = document.getElementById("container");
     const signUpTemplate = document.getElementById("sign-up-template");
     const signUpClone = signUpTemplate.content.cloneNode(true); // true for copy decendences too.
