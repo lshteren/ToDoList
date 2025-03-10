@@ -98,7 +98,9 @@ class TaskServer {
     }
 
     getLists(request) {
+        console.log("📤 מחזיר את הרשימות של:", request.user);
         let lists = this.databaseAPI.getLists(request.user);
+        console.log("📦 רשימות שנמצאו:", lists);
         return { success: true, lists };
     }
 

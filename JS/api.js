@@ -14,16 +14,6 @@ class UserDatabaseAPI {
         return JSON.parse(localStorage.getItem("storage_users")) || [];
     }
 
-    //build admin if not exist 
-    adminExists() {
-        let users = this.getUsers();
-        if (!users.some(user => user.username === "admin")) {
-            let adminUser = { username: "admin", email: "admin@admin.com", password: "admin" };
-            users.push(adminUser);
-            localStorage.setItem("storage_users", JSON.stringify(users));
-            console.log(" משתמש admin נוסף למערכת!");
-        }
-    }
 
     saveUser(user) {
         let users = this.getUsers();
@@ -32,6 +22,12 @@ class UserDatabaseAPI {
     }
 
     setCurrentUser(user) {
+        //localStorage.setItem("currentUser", JSON.stringify(user));
+        if (!user || !user.username) {
+            console.error("❌ שגיאה: מנסים לשמור משתמש לא תקין!", user);
+            return;
+        }
+        console.log("💾 שומר משתמש מחובר:", user);
         localStorage.setItem("currentUser", JSON.stringify(user));
     }
 
@@ -58,8 +54,8 @@ class UserDatabaseAPI {
 
 class TaskDatabaseAPI {
     getLists(user) {
-        let lists = JSON.parse(localStorage.getItem("task_lists")) || {};
-        return lists[user] || [];
+        let allLists = JSON.parse(localStorage.getItem("task_lists")) || {};
+        return allLists[user] || [];
     }
 
     saveLists(user, lists) {

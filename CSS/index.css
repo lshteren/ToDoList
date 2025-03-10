@@ -1,6 +1,5 @@
 /* העיצוב הוא זמני בלבד כנראה עוד ישתנה מלא :)*/
 
-
 body {
     display: flex;
     flex-direction: column;
@@ -19,7 +18,7 @@ h1 {
     margin-bottom: 10px;
 }
 
-h2 {
+#indexh2 {
     font-size: 24px;
     text-align: center;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
@@ -43,26 +42,26 @@ button {
     cursor: pointer;
     transition: 0.3s;
     border: 0.5px solid #333;
-    box-shadow: 5px 3px 5px 0px #55555585;    
+    box-shadow: 4px 1px 1px 0px #55555585;
 }
 
 /* עיצוב לכפתור כניסה */
 #sign-in-button {
-    background-color: #007bff;
-    color: white;
+    background-color:#9ac4ff;
+    color: rgb(39, 36, 36);
     
 }
 
 #sign-in-button:hover {
-    background-color: #0056b3;
+    background-color: #71a7f2;
 }
 
 /* עיצוב לכפתור הרשמה */
 #sign-up-button {
-    background-color: #28a745;
-    color: white;
+    background-color: #ff9ab0;
+    color: rgb(39, 36, 36);
 }
 
 #sign-up-button:hover {
-    background-color: #1e7e34;
+    background-color: #f7647f;
 }

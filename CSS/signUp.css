@@ -1,15 +1,15 @@
 /* עיצוב לטופס הרשמה */
-form {
+#signup-form {
     width: 300px;
     margin: auto;
     padding: 20px;
     background: #f9f9f9;
     border-radius: 8px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 2px 0px 10px 20px rgba(0, 0, 0, 0.1);
     text-align: center;
 }
 
-h2 {
+#signh2 {
     color: #333;
     font-size: 24px;
 }
@@ -26,11 +26,13 @@ label {
     color: #333;
 }
 
-input {
-    width: 100%;
-    padding: 8px;
+.up-input {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin: 8px 0;
     border: 1px solid #ccc;
     border-radius: 5px;
+    display: block;
     font-size: 16px;
 }
 
@@ -38,8 +40,8 @@ input {
     width: 100%;
     padding: 10px;
     margin-top: 15px;
-    background-color: #28a745;
-    color: white;
+    background-color: #a6de81;
+    color: rgb(255, 255, 255);
     font-size: 18px;
     border: none;
     border-radius: 5px;
@@ -48,5 +50,5 @@ input {
 }
 
 #signup:hover {
-    background-color: #218838;
+    background-color: #2a8821;
 }

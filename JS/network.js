@@ -40,7 +40,7 @@ class FXMLHttpRequest {
         let fullRequest = { ...this.request, ...data };
         let response = this.network.handleRequest(fullRequest);
 
-        if (callback) callback(response);
+        if (callback) callback(response); //delay
     }
 }
 

@@ -87,7 +87,7 @@ body {
 }
 
 .task-input button {
-    background-color: #28a745;
+    background-color: #58b96f;
     color: white;
     border: none;
     padding: 8px 15px;
@@ -96,7 +96,7 @@ body {
 }
 
 .task-input button:hover {
-    background-color: #218838;
+    background-color: #3c8f4e;
 }
 
 /* עיצוב רשימת המשימות */

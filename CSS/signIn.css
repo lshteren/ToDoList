@@ -20,13 +20,13 @@ body {
 }
 
 /* כותרת */
-h2 {
+#h2in{
     margin-bottom: 20px;
     color: #333;
 }
 
 /* שדות קלט */
-input {
+.in-input {
     width: calc(100% - 20px);
     padding: 10px;
     margin: 8px 0;
@@ -39,8 +39,8 @@ input {
 #login {
     width: 100%;
     padding: 10px;
-    background-color: #007bff;
-    color: white;
+    background-color: #6eebe4;
+    color: rgb(0, 0, 0);
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -48,5 +48,5 @@ input {
 }
 
 #login:hover {
-    background-color: #0056b3;
+    background-color: #00b3a1;
 }

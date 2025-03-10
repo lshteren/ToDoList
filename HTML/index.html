@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="../CSS/index.css">
     <link rel="stylesheet" href="../CSS/signIn.css">
     <link rel="stylesheet" href="../CSS/main.css">
+    <link rel="stylesheet" href="../CSS/signUp.css">
 
     <script  src="../JS/api.js"></script>
     <script  src="../JS/servers.js"></script>
@@ -22,7 +23,7 @@
     <div id="main-content" >
         <h1>Streamline your workflows
             <br> for maximum efficiency</h1>
-        <h2>Plan, manage, and track all your projects on one customizable platform </h2>
+        <h2 id="indexh2">Plan, manage, and track all your projects on one customizable platform </h2>
         <div id="manu-bar" style="display: flex;">
             <button id="sign-in-button" onclick="signInManuHandler()">sign in</button>
             <button id="sign-up-button" onclick="signUpManuHandler()">sign up</button>
@@ -54,7 +55,7 @@
             <button id="close-modal" onclick="closeModle()">✖</button>
             <ul id="modal-task-list"></ul>
             <input type="text" id="new-task-input" placeholder="Add a task...">
-            <button id="add-task-btn">Add Task</button>
+            <button id="add-task-btn" onclick="addTask()">Add Task</button>
         </div>
     </dialog>
 
@@ -62,13 +63,13 @@
     <!-- תבנית מסך התחברות -->
     <template id="sign-in-template" style=>
         <div class="login-container">
-            <h2>Sign In</h2>
+            <h2 id="h2in">Sign In</h2>
             <form id="login-form">
                 <label for="username">Username:</label>
-                <input type="text" id="username" required>
+                <input class="in-input" type="text" id="username" required>
     
                 <label for="password">Password:</label>
-                <input type="password" id="password" required>
+                <input  class="in-input" type="password" id="password" required>
     
                 <button id="login" onclick="signInButtonHandler()">log in</button>
             </form>
@@ -77,25 +78,25 @@
 
     <!-- תבנית מסך הרשמה -->
     <template id="sign-up-template">
-        <form onsubmit="signUpSubmitHandler(event)">
-            <h2>Register</h2>
+        <form id="signup-form" onsubmit="signUpSubmitHandler(event)">
+            <h2 id="signh2">Register</h2>
             <p>Please fill in this form to create an account.</p>
             <hr>
 
             <label for="uname"><b>Username</b></label>
-            <input type="text" id="uname" required>
-            <br />
+            <input  class="up-input" type="text" id="uname" required>
+            <!-- <br /> -->
 
             <label for="email"><b>Email</b></label>
-            <input type="email" id="email" required>
+            <input class="up-input" type="email" id="email" required>
             <br />
 
             <label for="psw"><b>Password</b></label>
-            <input type="password" id="psw" required>
+            <input class="up-input" type="password" id="psw" required>
             <br />
 
             <label for="re-password"><b>Repeat Password</b></label>
-            <input type="password" id="re-password" required>
+            <input class="up-input" type="password" id="re-password" required>
             <br />
 
             <button id="signup" type="submit">Register</button>
