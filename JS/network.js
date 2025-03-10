@@ -1,19 +1,22 @@
-// import { UserServer } from './userServer.js';
-// import { UserDatabaseAPI } from './api.js';
 
 class Network {
     constructor() {
-        this.userServer = new UserServer(new UserDatabaseAPI()); // accsess to the API
+        this.userServer = new UserServer(new UserDatabaseAPI()); // accsess to the contact API
+        this.taskServer = new TaskServer(new TaskDatabaseAPI()); // accsess to the tasks API
     }
 
     handleRequest(request) {
         console.log(" Network קיבל בקשה:", request);
 
+        //checks which sevrver should handle the request : 
         switch (request.server) {
             case "user":
                 return this.userServer.handleRequest(request);
-            default:
-                return { success: false, message: "Invalid server." };
+            case "tasks":
+                return this.taskServer.handleRequest(request); 
+            default: 
+            //if none of them - the request is wrong - "invalid server"
+                return { success: false, message: "Invalid server." }; 
         }
     }
 }
@@ -21,7 +24,7 @@ class Network {
 class FXMLHttpRequest {
     constructor(network) {
         this.network = network;//תכונה 1- רשת
-        this.request = null;
+        this.request = null; // תכונה 2- הבקשה : אתחול ל-null
     }
 
     open(method, server) {
@@ -41,5 +44,5 @@ class FXMLHttpRequest {
     }
 }
 
-
-const network = new Network(); // יצירת הרשת
+//once the page has loaded - we create the network 
+const network = new Network(); 

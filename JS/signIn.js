@@ -5,6 +5,7 @@ const mainPage = document.getElementById("main-content");
 
 
 function signInManuHandler(){
+    
     const mainContent = document.getElementById("main-content");
     const container = document.getElementById("container");
     const login_page = document.getElementById("sign-in-template");
@@ -18,8 +19,6 @@ function signInManuHandler(){
 }
 
 function signInButtonHandler() {
-    //event.preventDefault();
-    //const user =login();
     const username = document.getElementById("username").value;
     const password = document.getElementById("password").value;
     let xhr = new FXMLHttpRequest(network);
@@ -44,6 +43,8 @@ function loadMainPage(){
         container.innerHTML = '';
         container.appendChild(clone);
         container.display="block";
+
+        loadLists();
 
        // renderTasks();
         

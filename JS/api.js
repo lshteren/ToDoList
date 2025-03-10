@@ -55,3 +55,35 @@ class UserDatabaseAPI {
         localStorage.removeItem("currentUser");
     }
 }
+
+class TaskDatabaseAPI {
+    getLists(user) {
+        let lists = JSON.parse(localStorage.getItem("task_lists")) || {};
+        return lists[user] || [];
+    }
+
+    saveLists(user, lists) {
+        let allLists = JSON.parse(localStorage.getItem("task_lists")) || {};
+        allLists[user] = lists;
+        localStorage.setItem("task_lists", JSON.stringify(allLists));
+    }
+
+    createList(user, name) {
+        let lists = this.getLists(user);
+        let newList = { id: Date.now(), name, tasks: [] };
+        lists.push(newList);
+        this.saveLists(user, lists);
+        return true;
+    }
+
+    addTask(user, listId, taskText) {
+        let lists = this.getLists(user);
+        let list = lists.find(l => l.id === listId);
+        if (!list) return false;
+
+        let newTask = { id: Date.now(), text: taskText, completed: false };
+        list.tasks.push(newTask);
+        this.saveLists(user, lists);
+        return true;
+    }
+}

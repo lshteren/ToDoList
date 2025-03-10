@@ -10,10 +10,10 @@
     <link rel="stylesheet" href="../CSS/main.css">
 
     <script  src="../JS/api.js"></script>
-    <script  src="../JS/userServer.js"></script>
+    <script  src="../JS/servers.js"></script>
     <script  src="../JS/network.js"></script>
+    <script  src="../JS/tasks.js"></script>
     <script  src="../JS/index.js"></script>
-    <!-- <script src="../JS/auth.js"></script> -->
     <script src="../JS/signIn.js"></script>
     <script src="../JS/signUp.js"></script>
 </head>
@@ -36,20 +36,28 @@
     <template id="main-page-template">
         <div id="main-page-div">
             <div class="header">
-                <h1>Welcome to our site!</h1>
                 <button id="sign-out" onclick="signOutHandler()">Sign out</button>
             </div>
             
             <div class="todo-container">
-                <h2>To-Do List</h2>
-                <div class="task-input">
-                    <input type="text" id="new-task" placeholder="Add a new task...">
-                    <button id="add-task-button" onclick="addList()">Add Task</button>
-                </div>
-                <ul id="task-list"></ul>
+                <h2 id= "todoh2">Your To-Do Lists</h2>
+                <div id="lists-grid"></div>
+                <button id="add-list-button" onclick="addList()">+ Add List</button>
             </div>
         </div>
     </template>
+
+    <!-- עריכת משימות -->
+    <dialog id="task-modal">
+        <div class="modal-content">
+            <h2 id="modal-title"></h2>
+            <button id="close-modal" onclick="closeModle()">✖</button>
+            <ul id="modal-task-list"></ul>
+            <input type="text" id="new-task-input" placeholder="Add a task...">
+            <button id="add-task-btn">Add Task</button>
+        </div>
+    </dialog>
+
 
     <!-- תבנית מסך התחברות -->
     <template id="sign-in-template" style=>
