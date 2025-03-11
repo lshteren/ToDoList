@@ -1,4 +1,3 @@
-
 class UserServer {
     constructor(databaseAPI) {
         this.databaseAPI = databaseAPI; // object to manege the API 
@@ -125,7 +124,9 @@ class TaskServer {
         if (!success) {
             return { success: false, message: "Failed to delete task." };
         }
-        return { success: true, message: "Task deleted successfully!" };
+        // Return the updated lists along with the success message
+        let lists = this.databaseAPI.getLists(request.user);
+        return { success: true, message: "Task deleted successfully!", lists };
     }
 
     deleteList(request) {

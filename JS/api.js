@@ -1,4 +1,3 @@
-
 class UserDatabaseAPI {
     constructor(){
         let users = this.getUsers();
@@ -72,13 +71,61 @@ class TaskDatabaseAPI {
         return true;
     }
 
-    addTask(user, listId, taskText) {
+    addTask(user, listId, task) {
         let lists = this.getLists(user);
         let list = lists.find(l => l.id === listId);
         if (!list) return false;
 
-        let newTask = { id: Date.now(), text: taskText, completed: false };
-        list.tasks.push(newTask);
+        list.tasks.push(task);
+        this.saveLists(user, lists);
+        return true;
+    }
+
+    toggleTask(user, listId, taskId) {
+        let lists = this.getLists(user);
+        let list = lists.find(l => l.id === listId);
+        if (!list) return false;
+
+        let task = list.tasks.find(t => t.id === taskId);
+        if (!task) return false;
+
+        task.completed = !task.completed;
+        this.saveLists(user, lists);
+        return true;
+    }
+
+    deleteTask(user, listId, taskId) {
+        let lists = this.getLists(user);
+        let list = lists.find(l => l.id === listId);
+        if (!list) return false;
+
+        const taskIndex = list.tasks.findIndex(t => t.id === taskId);
+        if (taskIndex === -1) return false;
+
+        list.tasks.splice(taskIndex, 1);
+        this.saveLists(user, lists);
+        return true;
+    }
+
+    deleteList(user, listId) {
+        let lists = this.getLists(user);
+        const listIndex = lists.findIndex(l => l.id === listId);
+        if (listIndex === -1) return false;
+
+        lists.splice(listIndex, 1);
+        this.saveLists(user, lists);
+        return true;
+    }
+
+    editTask(user, listId, taskId, newText) {
+        let lists = this.getLists(user);
+        let list = lists.find(l => l.id === listId);
+        if (!list) return false;
+
+        let task = list.tasks.find(t => t.id === taskId);
+        if (!task) return false;
+
+        task.text = newText;
         this.saveLists(user, lists);
         return true;
     }

@@ -21,16 +21,16 @@ function signInManuHandler(){
 function signInButtonHandler() {
     const username = document.getElementById("username").value;
     const password = document.getElementById("password").value;
-    let xhr = new FXMLHttpRequest(network);
+        let xhr = new FXMLHttpRequest(network);
     xhr.open("POST", "user"); // שולח בקשה לשרת המשתמשים
-    xhr.send({ action: "login", username, password }, function(response) {
-        if (!response.success) {
+        xhr.send({ action: "login", username, password }, function(response) {
+            if (!response.success) {
             alert(response.message);
-            return;
-        }
-        alert(`Welcome ${response.user.username}!`);
+                return;
+            }
+            alert(`Welcome ${response.user.username}!`);
         loadMainPage(); // טעינת הדף הראשי עם המשימות
-    });
+        });
 }
 
 function loadMainPage(){
